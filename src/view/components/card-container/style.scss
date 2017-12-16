@@ -8,6 +8,7 @@
   .top-bar {
     height: 15%;
     margin-bottom: 2%;
+    padding: 0 3%;
     width: 100%;
 
     .logo-panel {
@@ -26,9 +27,14 @@
   }
 
   .cards-area {
-    background-color: #ffffff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     height: 78%;
+    justify-content: space-between;
     margin-bottom: 2%;
+    padding: 0 5%;
     width: 100%;
   }
 

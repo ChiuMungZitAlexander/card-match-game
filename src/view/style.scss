@@ -3,11 +3,13 @@
 
 /* components styles */
 @import './components/card-container/style.scss';
+@import './components/card-piece/style.scss';
 
 html,
 body {
   height: 100%;
   margin: 0;
+  min-width: 520px;
   padding: 0;
   width: 100%;
 }

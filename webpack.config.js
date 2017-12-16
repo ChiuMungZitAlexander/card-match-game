@@ -5,17 +5,20 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   module: {
     rules: [{
-      test: /(\.jsx|\.js)$/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            'env', 'react',
-          ],
-        },
+      test: /\.js[x]?$/,
+      include: path.resolve(__dirname, 'src'),
+      loader: 'babel-loader',
+      query: {
+        presets: [['env', {
+          'targets': {
+            'browsers': ['last 2 versions', 'safari >= 7'],
+          },
+          'include': ['transform-es2015-arrow-functions', 'es6.map'],
+        }], 'react'],
       },
       exclude: /node_modules/,
     },

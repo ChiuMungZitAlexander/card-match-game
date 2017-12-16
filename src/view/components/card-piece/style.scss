@@ -1,0 +1,23 @@
+.card {
+  align-items: center;
+  background-image: url('../view/assets/images/card.png');
+  background-size: 100% 100%;
+  cursor: pointer;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  width: 105px;
+
+  &:hover {
+    filter: drop-shadow(2px 2px 2px #666);
+    -webkit-filter: drop-shadow(2px 2px 2px #666);
+  }
+}
+
+.card-flipped {
+  align-items: center;
+  display: flex;
+  height: 120px;
+  justify-content: center;
+  width: 105px;
+}
