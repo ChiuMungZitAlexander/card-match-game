@@ -1,3 +1,9 @@
+/* common styles */
+@import './assets/styles/colors.scss';
+
+/* components styles */
+@import './components/card-container/style.scss';
+
 html,
 body {
   height: 100%;
@@ -13,5 +19,3 @@ body {
   justify-content: center;
   width: 100%;
 }
-
-@import './components/card-container/style.scss'
