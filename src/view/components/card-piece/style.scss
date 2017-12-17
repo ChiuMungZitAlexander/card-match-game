@@ -14,10 +14,6 @@
   }
 }
 
-.card-flipped {
-  align-items: center;
-  display: flex;
-  height: 120px;
-  justify-content: center;
-  width: 105px;
+.flipped {
+  background-image: none !important;
 }

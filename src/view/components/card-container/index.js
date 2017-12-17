@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../card-piece'
+import CONST from './const'
 
 let cardIndexArray = []; 
 let twoClickedCardsIndex = [];
@@ -8,25 +9,36 @@ class CardContainer extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      cardAmount: 16
+      cardsFlippedStatus: []
     }
+    this._handleCardClick = this._handleCardClick.bind(this);
   }
 
   componentDidMount () {
-    
+    let _cardsFlippedStatus = [];
+    let amount = CONST.CARD_AMOUNT;
+    while (amount--) {
+      _cardsFlippedStatus.push({
+        pairIndex: this._generateRandomIndex(),
+        flipped: false
+      });
+    }
+    this.setState({
+      cardsFlippedStatus: _cardsFlippedStatus
+    });
   }
 
-  _generateCards (amount) {
+  _generateCards () {
     const cardDomArray = [];
-    let _amount = amount;
+    const { cardsFlippedStatus } = this.state
 
-    while (_amount-- > 0) {
+    cardsFlippedStatus.forEach((element, index) => {
       cardDomArray.push(
-        <Card key={`card${16 - _amount}`}
-          index={this._generateRandomIndex()}
+        <Card key={`card${index}`} index={index} pairIndex={element.pairIndex} flipped={element.flipped}
           handleCardClick={this._handleCardClick}/>
-      );
-    }
+      )
+    });
+    
     return cardDomArray;
   }
 
@@ -41,7 +53,11 @@ class CardContainer extends Component {
   }
 
   _handleCardClick (index) {
-    twoClickedCardsIndex.push(index);
+    let _cardsFlippedStatus = this.state.cardsFlippedStatus;
+    _cardsFlippedStatus[index].flipped = true;
+    this.setState({
+      cardsFlippedStatus: _cardsFlippedStatus
+    });
   }
 
   render () {
@@ -51,7 +67,7 @@ class CardContainer extends Component {
           <div className='logo-panel'>Game</div>
         </div>
         <div className='cards-area'>
-          {this._generateCards(this.state.cardAmount)}
+          {this._generateCards(CONST.CARD_AMOUNT)}
         </div>
         <div className='footer'>timer</div>
       </div>
