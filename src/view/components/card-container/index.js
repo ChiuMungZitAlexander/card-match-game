@@ -52,12 +52,35 @@ class CardContainer extends Component {
     }
   }
 
-  _handleCardClick (index) {
+  _handleCardClick (index, pairIndex) {
     let _cardsFlippedStatus = this.state.cardsFlippedStatus;
     _cardsFlippedStatus[index].flipped = true;
+    
     this.setState({
       cardsFlippedStatus: _cardsFlippedStatus
+    }, () => {
+      this._sameCardCheck(index, pairIndex);
     });
+  }
+
+  _sameCardCheck (index, pairIndex) {
+    let _cardsFlippedStatus = this.state.cardsFlippedStatus;
+    twoClickedCardsIndex.push({
+      'index': index,
+      'pairIndex': pairIndex
+    });
+    if (twoClickedCardsIndex.length > 1) {
+      if (twoClickedCardsIndex[0].pairIndex !== twoClickedCardsIndex[1].pairIndex) {
+        _cardsFlippedStatus[twoClickedCardsIndex[0].index].flipped = false;
+        _cardsFlippedStatus[twoClickedCardsIndex[1].index].flipped = false;
+        setTimeout(() => {
+          this.setState({
+            cardsFlippedStatus: _cardsFlippedStatus
+          });
+        }, 400);
+      }
+      twoClickedCardsIndex.length = 0;
+    } 
   }
 
   render () {
