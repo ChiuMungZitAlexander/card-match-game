@@ -5,7 +5,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: './',
   },
   module: {
     rules: [{
@@ -50,7 +50,7 @@ module.exports = {
       use: [{
         loader: 'file-loader',
         options: {
-          name: '[path][name].[ext]',
+          name: 'img/[name].[ext]',
         },
       }],
     },
