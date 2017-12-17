@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "./";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 14);
@@ -18662,49 +18662,49 @@ function toComment(sourceMap) {
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/kb.jpg";
+module.exports = __webpack_require__.p + "img/kb.jpg";
 
 /***/ }),
 /* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/sc.jpg";
+module.exports = __webpack_require__.p + "img/sc.jpg";
 
 /***/ }),
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/dc.jpg";
+module.exports = __webpack_require__.p + "img/dc.jpg";
 
 /***/ }),
 /* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/ga.jpg";
+module.exports = __webpack_require__.p + "img/ga.jpg";
 
 /***/ }),
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/kd.jpg";
+module.exports = __webpack_require__.p + "img/kd.jpg";
 
 /***/ }),
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/ki.jpg";
+module.exports = __webpack_require__.p + "img/ki.jpg";
 
 /***/ }),
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/kl.jpg";
+module.exports = __webpack_require__.p + "img/kl.jpg";
 
 /***/ }),
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "src/view/assets/images/lbj.jpg";
+module.exports = __webpack_require__.p + "img/lbj.jpg";
 
 /***/ }),
 /* 41 */
