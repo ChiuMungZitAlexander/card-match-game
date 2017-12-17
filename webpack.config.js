@@ -13,12 +13,12 @@ module.exports = {
       include: path.resolve(__dirname, 'src'),
       loader: 'babel-loader',
       query: {
-        presets: [['env', {
+        presets: ['react', ['env', {
           'targets': {
             'browsers': ['last 2 versions', 'safari >= 7'],
           },
           'include': ['transform-es2015-arrow-functions', 'es6.map'],
-        }], 'react'],
+        }]],
       },
       exclude: /node_modules/,
     },

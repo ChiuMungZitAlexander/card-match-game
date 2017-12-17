@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../card-piece'
+import CONST from './const'
 
 let cardIndexArray = []; 
 let twoClickedCardsIndex = [];
@@ -8,25 +9,36 @@ class CardContainer extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      cardAmount: 16
+      cardsFlippedStatus: []
     }
+    this._handleCardClick = this._handleCardClick.bind(this);
   }
 
   componentDidMount () {
-    
+    let _cardsFlippedStatus = [];
+    let amount = CONST.CARD_AMOUNT;
+    while (amount--) {
+      _cardsFlippedStatus.push({
+        pairIndex: this._generateRandomIndex(),
+        flipped: false
+      });
+    }
+    this.setState({
+      cardsFlippedStatus: _cardsFlippedStatus
+    });
   }
 
-  _generateCards (amount) {
+  _generateCards () {
     const cardDomArray = [];
-    let _amount = amount;
+    const { cardsFlippedStatus } = this.state
 
-    while (_amount-- > 0) {
+    cardsFlippedStatus.forEach((element, index) => {
       cardDomArray.push(
-        <Card key={`card${16 - _amount}`}
-          index={this._generateRandomIndex()}
+        <Card key={`card${index}`} index={index} pairIndex={element.pairIndex} flipped={element.flipped}
           handleCardClick={this._handleCardClick}/>
-      );
-    }
+      )
+    });
+    
     return cardDomArray;
   }
 
@@ -40,8 +52,35 @@ class CardContainer extends Component {
     }
   }
 
-  _handleCardClick (index) {
-    twoClickedCardsIndex.push(index);
+  _handleCardClick (index, pairIndex) {
+    let _cardsFlippedStatus = this.state.cardsFlippedStatus;
+    _cardsFlippedStatus[index].flipped = true;
+    
+    this.setState({
+      cardsFlippedStatus: _cardsFlippedStatus
+    }, () => {
+      this._sameCardCheck(index, pairIndex);
+    });
+  }
+
+  _sameCardCheck (index, pairIndex) {
+    let _cardsFlippedStatus = this.state.cardsFlippedStatus;
+    twoClickedCardsIndex.push({
+      'index': index,
+      'pairIndex': pairIndex
+    });
+    if (twoClickedCardsIndex.length > 1) {
+      if (twoClickedCardsIndex[0].pairIndex !== twoClickedCardsIndex[1].pairIndex) {
+        _cardsFlippedStatus[twoClickedCardsIndex[0].index].flipped = false;
+        _cardsFlippedStatus[twoClickedCardsIndex[1].index].flipped = false;
+        setTimeout(() => {
+          this.setState({
+            cardsFlippedStatus: _cardsFlippedStatus
+          });
+        }, 400);
+      }
+      twoClickedCardsIndex.length = 0;
+    } 
   }
 
   render () {
@@ -51,7 +90,7 @@ class CardContainer extends Component {
           <div className='logo-panel'>Game</div>
         </div>
         <div className='cards-area'>
-          {this._generateCards(this.state.cardAmount)}
+          {this._generateCards(CONST.CARD_AMOUNT)}
         </div>
         <div className='footer'>timer</div>
       </div>

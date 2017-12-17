@@ -1,12 +1,22 @@
-.card {
-  align-items: center;
-  background-image: url('../view/assets/images/card.png');
-  background-size: 100% 100%;
-  cursor: pointer;
+.card-wrapper {
   display: flex;
   height: 120px;
-  justify-content: center;
+  position: relative;
   width: 105px;
+}
+
+.card {
+  align-items: center;
+  background-color: $card-back;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all .2s ease-in 0s;
+  width: 100%;
 
   &:hover {
     filter: drop-shadow(2px 2px 2px #666);
@@ -14,10 +24,59 @@
   }
 }
 
-.card-flipped {
+.flipped {
+  transition: all .2s ease-in 0s;
+  transform: scaleX(0);
+}
+
+.card-top {
   align-items: center;
-  display: flex;
-  height: 120px;
+  background-size: 100% 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  height: 100%;
   justify-content: center;
-  width: 105px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transition: all .2s ease-in 0s;
+  width: 100%;
+  transform: scaleX(0);
+}
+
+.flipped2 {
+  transition: all .2s ease-in 0s;
+  transform: scaleX(1);
+}
+
+.kb {
+  background-image: $kb;
+}
+
+.sc {
+  background-image: $sc;
+}
+
+.dc {
+  background-image: $dc;
+}
+
+.ga {
+  background-image: $ga;
+}
+
+.kd {
+  background-image: $kd;
+}
+
+.ki {
+  background-image: $ki;
+}
+
+.kl {
+  background-image: $kl;
+}
+
+.lbj {
+  background-image: $lbj;
 }
